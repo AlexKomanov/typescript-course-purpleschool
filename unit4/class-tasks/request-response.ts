@@ -4,20 +4,16 @@ interface IPayment {
     to: number;
 }
 
-type Status = 'success' | "filed";
-
+enum Status {
+    SUCCESS = 'success' ,
+    FAILED = "filed"
+}
 interface IRequest extends IPayment {
 
 }
 
-interface IPaymentSucceeded {
-
+interface IPaymentSucceeded extends IPayment {
     databaseId: number;
-    sum: number;
-    from: number;
-    to: number;
-
-
 }
 
 interface IPaymentFailed {
@@ -25,8 +21,13 @@ interface IPaymentFailed {
     errorCode: string;
 }
 
-interface IResponse {
-    status: Status;
-    data: IPaymentSucceeded | IPaymentFailed;
+interface IResponseFailed {
+    status: Status.FAILED,
+    data: IPaymentFailed
+}
+
+interface IResponseSucceeded {
+    status: Status.SUCCESS,
+
 }
 
