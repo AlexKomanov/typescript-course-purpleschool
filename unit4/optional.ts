@@ -13,7 +13,7 @@ const user3: ParticularUser = {
 const testUser = (user: ParticularUser) => {
     const myUser = user.password?.type;
 
-    const anotherUser = user.password!.admin; // <- forcible usage of optional parameter
+    const anotherUser = user.password!.admin; // <- forcible usage of optional parameter (we are sure that the value will be defined and not undifined)
 }
 
 const test = (param?: string) => {
