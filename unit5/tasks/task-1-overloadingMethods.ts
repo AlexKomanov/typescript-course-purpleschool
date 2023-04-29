@@ -1,19 +1,22 @@
 class TestUser {
-    skills: string[];
+    skills: string[] = [];
 
     addSkills(skill: string): void;
     addSkills(skills: string[]): void;
-    addSkills(skillsOrString: string | string[]) : void {
-        if (typeof skillsOrString == "string") {
-            this.skills.push(skillsOrString)
+    addSkills(skillOrSkills: string | string[]) : void {
+        if (typeof skillOrSkills == "string") {
+            this.skills.push(skillOrSkills)
         }
         else {
-            this.skills.concat(skillsOrString)
+            this.skills.push(...skillOrSkills)
         }
     }
 }
 
-new TestUser().addSkills("skills")
+const myUser = new TestUser();
+myUser.addSkills(['python', 'java']);
+myUser.addSkills('typescript');
+console.log(myUser.skills)
 
 function run(distance: number) : number;
 function run(distance: string) : string;
@@ -22,10 +25,11 @@ function run(distance: number | string): number | string {
         return 1;
     }
     else {
-        return '';
+        return '1';
     }
 }
 
 run(1200);
+run('1200 km')
 
 
